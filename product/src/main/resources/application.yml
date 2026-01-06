@@ -2,9 +2,9 @@ spring:
   application:
     name: product-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/product
-    username: kgbdb
-    password: kgbdb
+    url: jdbc:postgresql://ep-ancient-mouse-ahk87qo8-pooler.c-3.us-east-1.aws.neon.tech/product?sslmode=require&channel_binding=require
+    username: neondb_owner
+    password: npg_KBF6YHRqegu1
   jpa:
     database: postgresql
     show-sql: true

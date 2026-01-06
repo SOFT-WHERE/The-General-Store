@@ -28,8 +28,8 @@ public class UserService {
 
     }
 
-    public Optional<UserResponse> fetchUserById(Long id){
-        return userRepository.findById(id)
+    public Optional<UserResponse> fetchUserById(String id){
+        return userRepository.findById(String.valueOf(id))
                 .map(this::mapToUserResponse);
 
     }
@@ -52,9 +52,9 @@ public class UserService {
         }
     }
 
-    public void updateUser(Long id, UserRequest latest){
+    public void updateUser(String id, UserRequest latest){
 //        Optional<User> temp=usersList.stream().filter(u->u.getId()==id).findFirst();
-        Optional<User> u=userRepository.findById(id);
+        Optional<User> u=userRepository.findById(String.valueOf(id));
         if(u.isPresent()){
             User temp=u.get();
             updateUserFromRequest(temp,latest);

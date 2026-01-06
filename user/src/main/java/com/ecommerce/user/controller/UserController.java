@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/api/users/{id}")
-    public ResponseEntity<Optional<UserResponse>> getUser(@PathVariable Long id){
+    public ResponseEntity<Optional<UserResponse>> getUser(@PathVariable String id){
         Optional<UserResponse> u=userService.fetchUserById(id);
         if(u.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PutMapping("/api/users/{id}")
-    public void updateUsers(@PathVariable Long id,
+    public void updateUsers(@PathVariable String id,
                            @RequestBody UserRequest userRequest){
         userService.updateUser(id,userRequest);
 
