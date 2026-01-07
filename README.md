@@ -1,7 +1,9 @@
-Project Overview
+**Project Overview**
+
 The General Store is a modern E-Commerce application built using a microservices architecture. This platform demonstrates scalable backend services for an online store, with containerized deployment and API-driven design.
 
-Architecture & Structure
+**Architecture & Structure**
+
 The application follows a microservices pattern with independently deployable services:
 The-General-Store/
 ├── product/          # Product catalog service
@@ -10,21 +12,21 @@ The-General-Store/
 ├── docker-compose.yml # Container orchestration
 └── .idea/            # IDE configuration
 
-Clone the repository:
+**Clone the repository:**
+
 git clone https://github.com/SOFT-WHERE/The-General-Store.git
 cd The-General-Store
 
-Start the application with Docker:
+**Start the application with Docker:**
+
 docker-compose up -d
 
 
-API Documentation
+**API Documentation**
+
 The project includes a Postman collection with all required API calls:
-
 File: eCommerce_postman_collection.json
-
 Import this file into Postman to test all available endpoints
-
 Covers product, order, and user service APIs
 
 Service Configuration
@@ -43,23 +45,21 @@ User management functionality
 
 Part of the microservices ecosystem
 
-Docker Configuration
+**Docker Configuration**
+
 The docker-compose.yml file orchestrates all microservices:
-
 Containerized deployment for each service
-
 Service discovery and inter-service communication
-
 Database containers for each service's data persistence
 
-Database
+**Database**
+
 MySQL for product service (configurable for other services)
-
 Containerized database instances
-
 Schema management through application configuration
 
-Testing
+**Testing**
+
 Import the provided Postman collection
 Start services using Docker Compose
 Execute API calls in sequence:
