@@ -2,14 +2,16 @@ spring:
   application:
     name: product-service
   datasource:
-    url: jdbc:postgresql://ep-ancient-mouse-ahk87qo8-pooler.c-3.us-east-1.aws.neon.tech/product?sslmode=require&channel_binding=require
-    username: neondb_owner
-    password: npg_KBF6YHRqegu1
+    url: jdbc:mysql://localhost:3306/kgbdb
+    username: kgbdb
+    password: kgbdb
   jpa:
-    database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        format_sql: true
 server:
   port: 8081
