@@ -1,79 +1,79 @@
 services:
 
-  mysql:
-    container_name: mysql_container
-    image: mysql:8.0  # or mysql:latest
+#  mysql:
+#    container_name: mysql_container
+#    image: mysql:8.0  # or mysql:latest
+#    environment:
+#      MYSQL_ROOT_PASSWORD: kgbdb
+#      MYSQL_DATABASE: kgbdb
+#      MYSQL_USER: kgbdb
+#      MYSQL_PASSWORD: kgbdb
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+#      # Optional: for custom config
+#      # - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+#    ports:
+#      - "3306:3306"
+#    networks:
+#      - mysql  # Consider renaming to 'database' or 'app-network'
+#    restart: unless-stopped
+#
+#  phpmyadmin:
+#    container_name: phpmyadmin_container
+#    image: arm64v8/phpmyadmin:latest
+#    environment:
+#      PMA_HOST: mysql
+#      PMA_PORT: 3306
+##      PMA_ARBITRARY: 0
+##      UPLOAD_LIMIT: 50M
+#      # Authentication method (choose one):
+#      # Method 1: Use existing MySQL credentials (simpler)
+##      PMA_USER: kgbdb
+#      MYSQL_ROOT_PASSWORD: kgbdb
+#      # Method 2: Use root credentials
+#      # PMA_USER: root
+#      # PMA_PASSWORD: kgbdb
+#      # Method 3: Let users log in with their own credentials
+#      # PMA_ARBITRARY: 1
+#    ports:
+#      - "8484:80"  # phpMyAdmin web interface
+#    networks:
+#      - mysql
+#    restart: unless-stopped
+
+  postgres:
+    container_name: postgres_container
+    image: postgres:14
     environment:
-      MYSQL_ROOT_PASSWORD: kgbdb
-      MYSQL_DATABASE: kgbdb
-      MYSQL_USER: kgbdb
-      MYSQL_PASSWORD: kgbdb
+      POSTGRES_USER: kgbdb
+      POSTGRES_PASSWORD: kgbdb
+      PGDATA: /data/postgres
     volumes:
-      - mysql_data:/var/lib/mysql
-      # Optional: for custom config
-      # - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - postgres:/data/postgres
     ports:
-      - "3306:3306"
+      - "5432:5432"
     networks:
-      - mysql  # Consider renaming to 'database' or 'app-network'
+      - postgres
     restart: unless-stopped
 
-  phpmyadmin:
-    container_name: phpmyadmin_container
-    image: arm64v8/phpmyadmin:latest
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
     environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-#      PMA_ARBITRARY: 0
-#      UPLOAD_LIMIT: 50M
-      # Authentication method (choose one):
-      # Method 1: Use existing MySQL credentials (simpler)
-#      PMA_USER: kgbdb
-      MYSQL_ROOT_PASSWORD: kgbdb
-      # Method 2: Use root credentials
-      # PMA_USER: root
-      # PMA_PASSWORD: kgbdb
-      # Method 3: Let users log in with their own credentials
-      # PMA_ARBITRARY: 1
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
     ports:
-      - "8484:80"  # phpMyAdmin web interface
+      - "5050:80"
     networks:
-      - mysql
+      - postgres
     restart: unless-stopped
-
-#  postgres:
-#    container_name: postgres_container
-#    image: postgres:14
-#    environment:
-#      POSTGRES_USER: kgbdb
-#      POSTGRES_PASSWORD: kgbdb
-#      PGDATA: /data/postgres
-#    volumes:
-#      - postgres:/data/postgres
-#    ports:
-#      - "5432:5432"
-#    networks:
-#      - postgres
-#    restart: unless-stopped
-
-#  pgadmin:
-#    container_name: pgadmin_container
-#    image: dpage/pgadmin4
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-#      PGADMIN_CONFIG_SERVER_MODE: 'False'
-#    volumes:
-#      - pgadmin:/var/lib/pgadmin
-#    ports:
-#      - "5050:80"
-#    networks:
-#      - postgres
-#    restart: unless-stopped
 
 networks:
-  mysql:
+  postgres:
     driver: bridge
 
 volumes:
-  mysql_data:
+  postgres_data:
