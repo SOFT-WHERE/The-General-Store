@@ -2,15 +2,27 @@
 
 The General Store is a modern E-Commerce application built using a microservices architecture. This platform demonstrates scalable backend services for an online store, with containerized deployment and API-driven design.
 
-**Architecture & Structure**
 
-The application follows a microservices pattern with independently deployable services:
+**Technology Stack**
+Backend: Java 11+, Spring Boot 2.7+, Spring Cloud
+Database: MySQL/PostgreSQL per service
+Containerization: Docker, Docker Compose
+API Communication: REST APIs, Synchronous HTTP calls
+Build Tool: Maven
+Version Control: Git
+
+## 🏗️ Architecture & Project Structure
+
+The application follows a **microservices architecture**, where each service is independently deployable and scalable.
+
+```text
 The-General-Store/
-├── product/          # Product catalog service
-├── order/            # Order processing service  
-├── user/             # User management service
-├── docker-compose.yml # Container orchestration
-└── .idea/            # IDE configuration
+├── product/            # Product catalog microservice
+├── order/              # Order processing microservice
+├── user/               # User management microservice
+├── docker-compose.yml  # Docker-based container orchestration
+└── .idea/              # IDE configuration files
+```
 
 **Clone the repository:**
 
