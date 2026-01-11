@@ -11,7 +11,7 @@ API Communication: REST APIs, Synchronous HTTP calls
 Build Tool: Maven
 Version Control: Git
 
-## 🏗️ Architecture & Project Structure
+## Architecture & Project Structure
 
 The application follows a **microservices architecture**, where each service is independently deployable and scalable.
 
@@ -26,13 +26,14 @@ The-General-Store/
 
 **Clone the repository:**
 
+```
 git clone https://github.com/SOFT-WHERE/The-General-Store.git
 cd The-General-Store
-
+```
 **Start the application with Docker:**
-
+```
 docker-compose up -d
-
+```
 
 **API Documentation**
 
