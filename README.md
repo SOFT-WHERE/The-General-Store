@@ -1,6 +1,6 @@
 **Project Overview**
 
-                                                                ### The General Store
+  ### The General Store
 
 The General Store is a modern E-Commerce application built using a microservices architecture. This platform demonstrates scalable backend services for an online store, with containerized deployment and API-driven design.
 
